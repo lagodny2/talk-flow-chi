@@ -14,7 +14,12 @@ function toInputItems(messages) {
     )
     .map((message) => ({
       role: message.role,
-      content: [{ type: "input_text", text: message.content.trim() }]
+      content: [
+        {
+          type: message.role === "assistant" ? "output_text" : "input_text",
+          text: message.content.trim()
+        }
+      ]
     }));
 }
 
